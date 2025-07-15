@@ -3,7 +3,16 @@ import './App.css'
 import Welcome from './component/Welcome'
 import Header from './component/Header'
 import Footer from './component/Footer'
+import Navbar from './component/Navbar'
+import Greetings from './component/Greetings'
+import Counter from './component/Counter'
 
+const items = [
+  { id: 1, name: 'Home' },
+  { id: 2, name: 'Products' },
+  { id: 3, name: 'About' },
+  { id: 4, name: 'Contact' }
+];
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +21,10 @@ function App() {
   return (
     <div>
       <Header />   
-      <Welcome name={name} age={age} />
+      <Navbar items={items} />
+      {/* <Welcome name={name} age={age} /> */}
+      {/* <Greetings name={name} age={age} />  */}
+      <Counter />
       <Footer />   
     </div>
   );
