@@ -20,9 +20,10 @@ const Navbar = ({items}) => {
     };
 
     return (
-        <ul>
+        <ul className="flex space-x-4 p-4 bg-gray-200">
             {items.map(item => (
-                <li key={item.id} onClick={() => handleClick(item.id, item.name)}>
+                <li className="cursor-pointer hover:text-blue-500 px-2 py-1 rounded hover:bg-gray-300 transition-colors duration-200"
+                key={item.id} onClick={() => handleClick(item.id, item.name)}>
                     {item.name}
                 </li>
             ))}
