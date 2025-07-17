@@ -7,6 +7,9 @@ import Navbar from './component/Navbar'
 import Greetings from './component/Greetings'
 import Counter from './component/counter/Counter'
 import Dashboard from './component/Dashboard'
+import BasicForm from './component/forms/BasicForm'
+import LoginForm from './component/forms/LoginForm'
+import Timer from './component/Timer'
 
 const items = [
   { id: 1, name: 'Home' },
@@ -16,21 +19,25 @@ const items = [
 ];
 
 function App() {
-  const [isloggedIn, setIsLoggedIn] = useState(false);
+  const [isloggedIn, setIsLoggedIn] = useState(true);
   const name = "Alex's Miller";
   const age = 42;
   return (
     <div>
       <Header />
       <Navbar items={items} />
-      {
+      {/* {
         isloggedIn ? (
           <Welcome name={name} age={age} />
         ) : (
           <Counter />
         )
-      }
+      } */}
       {/* <Dashboard /> */}
+
+      {/* <BasicForm /> */}
+      {/* <LoginForm /> */}
+      <Timer />
       <Footer />
     </div>
   );
