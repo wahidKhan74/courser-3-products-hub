@@ -1,5 +1,6 @@
 import { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Auth } from "../auth/auth";
 
 function LoginForm() {
     // State to manage form data
@@ -37,7 +38,12 @@ function LoginForm() {
         }
 
         // Simulate an API call
-        if (email === "user@example.com" && password === "password123") {
+        if (email === "admin@example.com" && password === "password123") {
+            
+            // Simulate successful login
+            Auth.login(); // set authentication state true
+            Auth.setAdmin(); // Set admin status true
+
             // Redirect to dashboard or home page on successful login
             // navigate("/dashboard");
 

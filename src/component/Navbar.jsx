@@ -26,6 +26,7 @@ import Profile from './Profile';
 import Settings from './Settings';
 import UserDetails from './UserDetails';
 import NotFound from './NotFound';
+import PrivateRoute from './PrivateRoute';
 
 const Navbar = ({items}) => {
 
@@ -57,7 +58,11 @@ const Navbar = ({items}) => {
                 <Route path="/timer" element={<Timer />} />
 
                 {/* Nested routing */}
-                <Route path="/dashboard" element={<Dashboard />}> 
+                <Route path="/dashboard" element={
+                    <PrivateRoute>
+                        <Dashboard />
+                    </PrivateRoute>
+                }> 
                     <Route index element={<DashboardHome />} />
                     <Route path="profile" element={<Profile />} />
                     <Route path="settings" element={<Settings />} />
