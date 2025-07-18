@@ -21,6 +21,12 @@ import Dashboard from './Dashboard';
 import BasicForm from './forms/BasicForm';
 import LoginForm from './forms/LoginForm';
 import Timer from './Timer';
+import DashboardHome from './DashboardHome';
+import Profile from './Profile';
+import Settings from './Settings';
+import UserDetails from './UserDetails';
+import NotFound from './NotFound';
+
 const Navbar = ({items}) => {
 
     const [name, setName] = useState("John Doe");
@@ -42,13 +48,27 @@ const Navbar = ({items}) => {
             </ul>
 
             <Routes>
+                {/*  Define the routes for the application */}
                 <Route path="/home" element={<Welcome />} />
                 <Route path="/greetings" element={<Greetings name={name} age={age} />} />
                 <Route path="/counter" element={<Counter />} />
-                <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/basic" element={<BasicForm />} />
                 <Route path="/login" element={<LoginForm />} />
                 <Route path="/timer" element={<Timer />} />
+
+                {/* Nested routing */}
+                <Route path="/dashboard" element={<Dashboard />}> 
+                    <Route index element={<DashboardHome />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="settings" element={<Settings />} />
+                </Route>
+
+                {/* Route with parameter */}
+                <Route path="/users/:userId" element={<UserDetails />} />
+
+                {/* Catch-all route */}
+                <Route path="*" element={<NotFound />} />
+                
             </Routes>
         </Router>
     );

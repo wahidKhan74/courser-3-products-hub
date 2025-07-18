@@ -1,10 +1,13 @@
 import { use, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     // State to manage form data
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({ email: "", password: "" });
     const [error, setError] = useState(null);
+
+    const navigate = useNavigate();
 
     // Handle input change
     const handleChange = (event) => {
@@ -31,6 +34,18 @@ function LoginForm() {
         if (!email || !password) {
             setError("Email and password are required.");
             return;
+        }
+
+        // Simulate an API call
+        if (email === "user@example.com" && password === "password123") {
+            // Redirect to dashboard or home page on successful login
+            // navigate("/dashboard");
+
+            // For demonstration, we will just log the email and redirect
+            // you can pass a state object like this
+            navigate("/dashboard", { state: { email } });
+        } else {
+            setError("Invalid email or password. Please try again.");
         }
     }
 

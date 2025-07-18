@@ -1,47 +1,22 @@
-import React from "react";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
-// function Dashboard() {
-//     const [isloggedIn, setIsLoggedIn] = React.useState(false);
-//     // This component will render the dashboard for the products hub
-
-//     if (isloggedIn) {
-//         return (
-//             <div>
-//                 <h1>Dashboard</h1>
-//                 <p>Welcome to the products hub dashboard!</p>
-//                 <button onClick={() => setIsLoggedIn(false)}>Log Out</button>
-//             </div>
-//         );
-//     } else {
-//         return (
-//             <div>
-//                 <h1>Please log in to access the dashboard</h1>
-//                 <button onClick={() => setIsLoggedIn(true)}>Log In</button>
-//             </div>
-//         )
-//     }
-// }
-
-function Dashboard() {
-    const [isloggedIn, setIsLoggedIn] = React.useState(false);
-    // This component will render the dashboard for the products hub
+export default function Dashboard() {
+    const location = useLocation();
+    const email = location.state?.email || "Guest";
     return (
-        <div>
-            {isloggedIn ? (
-                <div>
-                    <h1>Dashboard</h1>
-                    <p>Welcome to the products hub dashboard!</p>
-                </div>
-            ) : (
-                <div>
-                    <h1>Please log in to access the dashboard</h1>
-                </div>
-            )}
-            <button onClick={() => setIsLoggedIn(!isloggedIn)}>
-                {isloggedIn ? "Log Out" : "Log In"}
-            </button>
+        <div className="p-4">
+           <h1 className="text-2xl font-bold mb-4">Dashboard for {email}</h1>
+
+            {/* Sub Navigation links for the dashboard */}
+           <nav className="mb-4">
+               <NavLink to="" end className="text-blue-600 hover:underline">Home</NavLink>
+               <NavLink to="profile" className="text-blue-600 hover:underline">Profile</NavLink>
+               <NavLink to="settings" className="text-blue-600 hover:underline">Settings</NavLink>
+            </nav>
+
+            {/* Outlet for nested routes */}
+            {/* This is where the nested components will be rendered */}
+            <Outlet />
         </div>
     );
 }
-
-export default Dashboard;
