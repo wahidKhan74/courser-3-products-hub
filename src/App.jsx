@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css'
 import Header from './component/Header'
 import Footer from './component/Footer'
 import Navbar from './component/Navbar'
+import { ThemeProvider } from './component/ThemeContext';
 
 
 function App() {
@@ -12,9 +12,11 @@ function App() {
 
   return (
     <> 
-      <Header />
-      <Navbar />
-      <Footer />
+     <ThemeProvider>
+        <Header />
+        <Navbar />
+        <Footer />
+      </ThemeProvider>
     </>
   );
 }

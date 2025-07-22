@@ -14,7 +14,7 @@
 // }
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Welcome from './welcome/Welcome';
 import Greetings from './Greetings';
 import Counter from './counter/Counter';
@@ -28,6 +28,9 @@ import Settings from './Settings';
 import UserDetails from './UserDetails';
 import NotFound from './NotFound';
 import PrivateRoute from './PrivateRoute';
+import { TheamContext } from './ThemeContext';
+import ReCounter from './counter/ReCounter';
+import PostDetails from './PostDetails';
 
 const Navbar = () => {
 
@@ -37,11 +40,16 @@ const Navbar = () => {
         console.log(`Clicked on item with id: ${id} and name: ${name}`);
     };
 
+    // Access the theme context
+    const { theme , toggleTheme } = useContext(TheamContext);
+
     const routes = [
         { path: '/home', name: "Welcome", element: <Welcome name={name} age={age} /> },
         { path: '/greetings', name: "Greetings", element: <Greetings name={name} age={age} /> },
-        { path: '/counter', name: "Counter", element: <Counter /> },
-        { path: '/basic', name: "Basic", element: <BasicForm /> },
+        // { path: '/counter', name: "Counter", element: <Counter /> },
+        // { path: '/re-counter', name: "Re Counter", element: <ReCounter /> },
+        // { path: '/basic', name: "Basic", element: <BasicForm /> },
+        { path: '/posts', name: "Posts", element: <PostDetails /> },
         { path: '/login', name: "Login", element: <LoginForm /> },
         { path: '/timer', name: "Timer", element: <Timer /> },
         {
@@ -113,6 +121,12 @@ const Navbar = () => {
                             )}
                         </li>
                     ))}
+
+                <li className="ml-auto">
+                    <button onClick={toggleTheme} className="px-4 py-2 mb-6 bg-blue-500 text-white rounded hover:bg-blue-600">
+                        Switch to { theme !== "light" ? "Light" : "Dark"} Mode
+                    </button>
+                </li>
             </ul>
 
             <AnimatePresence mode="wait">
