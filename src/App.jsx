@@ -4,7 +4,7 @@ import Header from './component/Header'
 import Footer from './component/Footer'
 import Navbar from './component/Navbar'
 import { ThemeProvider } from './component/ThemeContext';
-import store from './store';
+import store from './app/store';
 import { Provider } from 'react-redux'
 
 function App() {

@@ -30,6 +30,8 @@ import { TheamContext } from './ThemeContext';
 import {useDispatch, useSelector} from 'react-redux';
 import PostDetails from './PostDetails';
 import ReduxCounter from './counter/ReduxCounter';
+import ListTodo from '../features/ListTodo';
+import AddTodo from '../features/AddTodo';
 
 const Navbar = () => {
 
@@ -43,7 +45,9 @@ const Navbar = () => {
     const { theme , toggleTheme } = useContext(TheamContext);
 
     // step4 : Get data store with count 
-    const count = useSelector((state) => state.count);
+    const count = useSelector((state) => state.counter);
+    const todos = useSelector((state) => state.todos);
+
     // step5: Get dispatch function to dispatch actions
     const dispatch = useDispatch();
 
@@ -51,21 +55,27 @@ const Navbar = () => {
     const increment = () => dispatch({ type: 'INCREMENT' });
     const decrement = () => dispatch({ type: 'DECREMENT' });
     const reset = () => dispatch({ type: 'RESET_COUNTER' });
+    const addTodo = (todo) => dispatch({ type: 'ADD_TODO', payload: todo });
+    const removeTodo = (id) => dispatch({ type: 'REMOVE_TODO', payload: id });
 
     const routes = [
         { path: '/home', name: "Welcome", element: <Welcome name={name} age={age} /> },
         { path: '/greetings', name: "Greetings", element: <Greetings name={name} age={age} /> },
         // step7: Define routes
-        { 
-            path: '/counter', name: "Counter", 
-            element: <ReduxCounter  count={count} increment={increment} decrement={decrement} reset={reset}/> 
-        },
+        // { 
+        //     path: '/counter', name: "Counter", 
+        //     element: <ReduxCounter  count={count} increment={increment} decrement={decrement} reset={reset}/> 
+        // },
         // { path: '/counter', name: "Counter", element: <Counter /> },
         // { path: '/re-counter', name: "Re Counter", element: <ReCounter /> },
         // { path: '/basic', name: "Basic", element: <BasicForm /> },
-        { path: '/posts', name: "Posts", element: <PostDetails /> },
-        { path: '/login', name: "Login", element: <LoginForm /> },
-        { path: '/timer', name: "Timer", element: <Timer /> },
+        // { path: '/posts', name: "Posts", element: <PostDetails /> },
+        // { path: '/login', name: "Login", element: <LoginForm /> },
+        // { path: '/timer', name: "Timer", element: <Timer /> },
+
+        { path: '/todolist', name: "Todo List", element: <ListTodo todos={todos} removeTodo={removeTodo}/> },
+        { path: 'addtodo', name: "Add Todo", element: <AddTodo addTodo={addTodo} /> },
+
         {
             path: '/dashboard', name: "Dashboard",
             element: (<PrivateRoute>
