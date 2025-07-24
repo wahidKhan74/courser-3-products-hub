@@ -1,7 +1,7 @@
 //import React and createContext from react
 import { createContext, useEffect, useState } from 'react'
 
-// create a context for the theme
+// step 1: create a context for the theme
 const TheamContext = createContext();
 
 // create a ThemeProvider component
@@ -27,6 +27,7 @@ const ThemeProvider = ({children}) => {
     }, [theme]);
 
     return (
+        // step2 : provide the theme and toggleTheme function to the context
         <TheamContext.Provider value={{ theme, toggleTheme }}>
             {children}
         </TheamContext.Provider>

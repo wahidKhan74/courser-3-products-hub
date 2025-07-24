@@ -40,7 +40,7 @@ const Navbar = () => {
         console.log(`Clicked on item with id: ${id} and name: ${name}`);
     };
 
-    // Access the theme context
+    //step4:  Access the theme context
     const { theme , toggleTheme } = useContext(TheamContext);
 
     const routes = [

@@ -12,6 +12,7 @@ function App() {
 
   return (
     <> 
+     {/* step: Wrapping the application with ThemeProvider to provide theme context */}
      <ThemeProvider>
         <Header />
         <Navbar />
