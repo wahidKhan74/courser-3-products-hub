@@ -69,12 +69,12 @@ const Navbar = () => {
         // { path: '/counter', name: "Counter", element: <Counter /> },
         // { path: '/re-counter', name: "Re Counter", element: <ReCounter /> },
         // { path: '/basic', name: "Basic", element: <BasicForm /> },
-        // { path: '/posts', name: "Posts", element: <PostDetails /> },
+        { path: '/posts', name: "Posts", element: <PostDetails /> },
         // { path: '/login', name: "Login", element: <LoginForm /> },
         // { path: '/timer', name: "Timer", element: <Timer /> },
 
-        { path: '/todolist', name: "Todo List", element: <ListTodo todos={todos} removeTodo={removeTodo}/> },
-        { path: 'addtodo', name: "Add Todo", element: <AddTodo addTodo={addTodo} /> },
+        // { path: '/todolist', name: "Todo List", element: <ListTodo todos={todos} removeTodo={removeTodo}/> },
+        // { path: 'addtodo', name: "Add Todo", element: <AddTodo addTodo={addTodo} /> },
 
         {
             path: '/dashboard', name: "Dashboard",
