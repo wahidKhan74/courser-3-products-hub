@@ -42,24 +42,11 @@ const Navbar = () => {
     //step4:  Access the theme context
     const { theme , toggleTheme } = useContext(TheamContext);
 
-    // step4 : Get data store with count 
-    const count = useSelector((state) => state.count);
-    // step5: Get dispatch function to dispatch actions
-    const dispatch = useDispatch();
-
-    // step6: Define action creators
-    const increment = () => dispatch({ type: 'INCREMENT' });
-    const decrement = () => dispatch({ type: 'DECREMENT' });
-    const reset = () => dispatch({ type: 'RESET_COUNTER' });
-
     const routes = [
         { path: '/home', name: "Welcome", element: <Welcome name={name} age={age} /> },
         { path: '/greetings', name: "Greetings", element: <Greetings name={name} age={age} /> },
         // step7: Define routes
-        { 
-            path: '/counter', name: "Counter", 
-            element: <ReduxCounter  count={count} increment={increment} decrement={decrement} reset={reset}/> 
-        },
+        { path: '/counter', name: "Counter", element: <ReduxCounter /> },
         // { path: '/counter', name: "Counter", element: <Counter /> },
         // { path: '/re-counter', name: "Re Counter", element: <ReCounter /> },
         // { path: '/basic', name: "Basic", element: <BasicForm /> },
